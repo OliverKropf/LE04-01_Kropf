@@ -29,7 +29,8 @@ namespace LE04_01_Kropf.ProductClasses
                                   $"\nName:         {chosenProduct.Name}" +
                                   $"\nDescription:  {chosenProduct.Description} " +
                                   $"\nCapacity:     {VendingMachineMethods.ReturnCapacity((Drink)chosenProduct)}l" +
-                                  $"\nPrice:        {chosenProduct.Price} EUR.\n");
+                                  $"\nPrice:        {chosenProduct.Price} EUR" +
+                                  $"\nAmount:       {chosenProduct.Amount}");
             }
             else
             {
@@ -37,7 +38,8 @@ namespace LE04_01_Kropf.ProductClasses
                 Console.WriteLine($"\nYou chose Nr. {productNumber}" +
                                   $"\nName:         {chosenProduct.Name}" +
                                   $"\nDescription:  {chosenProduct.Description}" +
-                                  $"\nPrice:        {chosenProduct.Price} EUR.\n");
+                                  $"\nPrice:        {chosenProduct.Price} EUR" +
+                                  $"\nAmount:       {chosenProduct.Amount}");
             }
         }
     }

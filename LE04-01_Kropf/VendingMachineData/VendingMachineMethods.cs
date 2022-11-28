@@ -13,7 +13,7 @@ namespace LE04_01_Kropf
     {
         static Dictionary<int, Snacks> VendingMachineContent = new Dictionary<int, Snacks>(); 
         public static List<Snacks> Basket = new List<Snacks>();
-        public static Dictionary<Double, string> PriceAndNameDictionary = new Dictionary<Double, string>();
+        public static List<Snacks> PriceAndNameList = new List<Snacks>();
         public static void GenerateProducts()
         {
             Drink Cola = new Drink("Coca Cola", "53g sugar per 0,5l/Coloring E 150d", 1.50, 5, 0.5);
@@ -51,7 +51,7 @@ namespace LE04_01_Kropf
         }
         public static void AddProductToBasket(Snacks product)
         {
-            if (Basket.Count < 3)
+            if (Basket.Count != 3)
             {
                 Basket.Add(product);
                 Console.WriteLine("Product was successfully added to you 'shopping basket'!\n\n");
@@ -65,8 +65,7 @@ namespace LE04_01_Kropf
         }
 
         /// <summary>
-        /// This Method asks the user if he wants to add another product to his basket, reduces the amount of the specific product
-        /// and saves the price and the name in a dictionary for later usage in MoneyMethods.
+        /// This Method asks the user if he wants to add another product to his basket, reduces the amount of the specific product!
         /// </summary>
         /// <param name="product"></param>
         /// <returns></returns>
@@ -80,8 +79,10 @@ namespace LE04_01_Kropf
 
             }while(awnser != 1 && awnser!= 2);
 
-            ReduceProductAmount(product);
-            SavePriceAndName(product.Price, product.Name);
+            product.Amount--;
+            //if(Basket.Count != 3) Basket.Add(product);
+            //ReduceProductAmount(product);
+            //SavePriceAndName(product.Price, product.Name);
 
             if (awnser == 1)
             {
@@ -90,17 +91,9 @@ namespace LE04_01_Kropf
             }
             return false;
         }
-        public static void SavePriceAndName(double p, string n)
+        public static List<Snacks> ReturnBasket()
         {
-            PriceAndNameDictionary.Add(p, n);
-        }
-        public static Dictionary<double, string> ReturnPriceAndNameDictionary()
-        {
-            return PriceAndNameDictionary;
-        }
-        public static void ReduceProductAmount(Snacks product) 
-        {
-            product.Amount--;
+            return Basket;
         }
         public static bool CheckAmountOfProduct(Snacks product)
         {
@@ -111,9 +104,8 @@ namespace LE04_01_Kropf
         {
             return Convert.ToDouble(d.Capacity);
         }
-        public static void ClearLists()
+        public static void ClearBasket()
         {
-            PriceAndNameDictionary.Clear(); 
             Basket.Clear(); 
         }
     }

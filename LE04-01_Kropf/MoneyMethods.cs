@@ -12,14 +12,15 @@ namespace LE04_01_Kropf
         public static void Expense()
         {
             double totalPrice = 0;
-            Dictionary<double, string> PriceAndName = VendingMachineMethods.ReturnPriceAndNameDictionary();
+            List<Snacks> PriceAndName = VendingMachineMethods.ReturnBasket();
             Console.Clear();
-            foreach(KeyValuePair<double, string> kvp in PriceAndName)
+            foreach(Snacks kvp in PriceAndName)
             {
-                Console.WriteLine($"Product:   {kvp.Value}\n" +
-                                  $"$Price:                                  [{kvp.Key}EUR]");
-                totalPrice += kvp.Key;
+                Console.WriteLine($"Product:                                {kvp.Name}\n" +
+                                  $"Price:                                  [{kvp.Price}EUR]");
+                totalPrice += kvp.Price;
             }
+
             Console.WriteLine("---------------------------------------------------------\n");
             Console.WriteLine($"Total amount:                             [{totalPrice}EUR]");
 
@@ -34,7 +35,7 @@ namespace LE04_01_Kropf
             if (payment - totalPrice > 0) Console.WriteLine($"You get {payment - totalPrice:0.00} EUR back."); 
             Console.WriteLine("\nThank you for buying from this vending machine!");
             
-            VendingMachineMethods.ClearLists(); 
+            VendingMachineMethods.ClearBasket(); 
         }
     }
 }

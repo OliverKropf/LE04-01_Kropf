@@ -63,12 +63,11 @@ namespace LE04_01_Kropf.VendingMachineData
         {
             if (!VendingMachineMethods.CheckAmountOfProduct(product))
             {
-                Console.WriteLine("\nSorry but the vending machine is out of your desired product!\n");
+                Console.WriteLine("\nVending is out of that product!\n");
                 return;
             }
             VendingMachineMethods.BaskedCheckAndDescriptionPrint(product, decision);
             VendingMachineMethods.AddProductToBasket(product);
-            VendingMachineMethods.ReduceProductAmount(product);
             if (VendingMachineMethods.DoesUserWantToAddMore(product)) return;
             else 
             {
