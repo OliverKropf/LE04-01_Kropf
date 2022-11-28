@@ -1,9 +1,6 @@
 ﻿using LE04_01_Kropf.ProductClasses;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace LE04_01_Kropf.VendingMachineData
 {
@@ -63,7 +60,9 @@ namespace LE04_01_Kropf.VendingMachineData
         {
             if (!VendingMachineMethods.CheckAmountOfProduct(product))
             {
-                Console.WriteLine("\nVending is out of that product!\n");
+                Console.WriteLine("\nVending Machine is out of that product!\n");
+                Thread.Sleep(2000);
+                Console.Clear();
                 return;
             }
             VendingMachineMethods.BaskedCheckAndDescriptionPrint(product, decision);

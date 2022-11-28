@@ -1,11 +1,6 @@
 ﻿using LE04_01_Kropf.ProductClasses;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Documents;
 
 namespace LE04_01_Kropf
 {
@@ -13,7 +8,6 @@ namespace LE04_01_Kropf
     {
         static Dictionary<int, Snacks> VendingMachineContent = new Dictionary<int, Snacks>(); 
         public static List<Snacks> Basket = new List<Snacks>();
-        public static List<Snacks> PriceAndNameList = new List<Snacks>();
         public static void GenerateProducts()
         {
             Drink Cola = new Drink("Coca Cola", "53g sugar per 0,5l/Coloring E 150d", 1.50, 5, 0.5);
@@ -80,9 +74,6 @@ namespace LE04_01_Kropf
             }while(awnser != 1 && awnser!= 2);
 
             product.Amount--;
-            //if(Basket.Count != 3) Basket.Add(product);
-            //ReduceProductAmount(product);
-            //SavePriceAndName(product.Price, product.Name);
 
             if (awnser == 1)
             {
